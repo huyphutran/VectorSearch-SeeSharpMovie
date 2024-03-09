@@ -6,7 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 var mongoDBSettings = builder.Configuration.GetSection("MongoDBSettings").Get<MongoDBSettings>();
 builder.Services.AddScoped(service => new MongoDBService(mongoDBSettings));
-
+var openAPIKey = builder.Configuration.GetValue<string>("OpenAPIKey");
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
